@@ -1,0 +1,101 @@
+diff --git a/customization.cfg b/customization.cfg
+index f7af4ed..bf921d8 100644
+--- a/customization.cfg
++++ b/customization.cfg
+@@ -3,13 +3,13 @@
+ # Linux distribution you are using, options are "Arch", "Ubuntu", "Debian", "Fedora", "Suse", "Gentoo", "Generic".
+ # It is automatically set to "Arch" when using PKGBUILD.
+ # If left empty, the script will prompt
+-_distro=""
++_distro="Ubuntu"
+ 
+ # Kernel Version - x.x format without the subversion (will always grab latest available subversion) is recommended
+ # you can also set a specific kernel version, e.g. "6.0-rc4" or "5.10.51",
+ #  -> note however that a "z" too small on a "x.y.z" version may make patches fail
+ #     as they got adapted for newer "z" values.
+-_version=""
++_version="6.13"
+ 
+ #### MISC OPTIONS ####
+ 
+@@ -66,7 +66,7 @@ _modprobeddb="false"
+ _modprobeddb_db_path=~/.config/modprobed.db
+ 
+ # Set to "1" to call make menuconfig, "2" to call make nconfig, "3" to call make xconfig, before building the kernel. Set to false to disable and skip the prompt.
+-_menunconfig=""
++_menunconfig="false"
+ 
+ # Set to true to generate a kernel config fragment from your changes in menuconfig/nconfig. Set to false to disable and skip the prompt.
+ _diffconfig=""
+@@ -105,11 +105,11 @@ _STRIP="true"
+ # CPU scheduler - Options are "pds", "bmq", "cacule", "tt", "bore", "bore-eevdf", "echo", "cfs" (linux 6.5-) or "eevdf" (kernel's default, 6.6+)
+ # "upds" (TkG's Undead PDS) and "muqss" are also available on legacy kernel revisions
+ # If unsure, select "eevdf" (default)
+-_cpusched=""
++_cpusched="eevdf"
+ 
+ # Compiler to use - Options are "gcc" or "llvm".
+ # For advanced users.
+-_compiler=""
++_compiler="gcc"
+ 
+ # [Generic and Gentoo specific] Replace `libunwind` with `llvm-libunwind`.
+ # ! This is currently experimental.
+@@ -168,10 +168,10 @@ _misc_adds="true"
+ # Full tickless can give higher performances in case you use isolation of CPUs for tasks
+ # and it works only when using the nohz_full kernel parameter, otherwise behaves like idle.
+ # Just tickless idle perform better for most platforms.
+-_tickless=""
++_tickless="2"
+ 
+ # Set to "true" to use ACS override patch - https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_.28ACS_override_patch.29 - Kernel default is "false"
+-_acs_override=""
++_acs_override="false"
+ 
+ # Set to "true" to add Bcache filesystem support. You'll have to install bcachefs-tools-git from AUR for utilities - https://bcachefs.org/
+ # If in doubt, leave it to "false"
+@@ -187,7 +187,7 @@ _ntsync="false"
+ 
+ # Set to "true" to enable Binder modules to use Waydroid Android containers
+ # !!! Not available on Project C schedulers (PDS & BMQ) due to disabled PSI on those !!!
+-_waydroid=""
++_waydroid="false"
+ 
+ # Various patches and tweaks from Zen/Liquorix, Xanmod and the community - Default is "true"
+ _glitched_base="true"
+@@ -197,7 +197,7 @@ _glitched_base="true"
+ _zenify="true"
+ 
+ # compiler optimization level - 1. Optimize for performance (-O2); 2. Optimize harder (-O3); 3. Optimize for size (-Os) - Kernel default is "1"
+-_compileroptlevel="1"
++_compileroptlevel="3"
+ 
+ # CPU compiler optimizations - Defaults to prompt at kernel config if left empty
+ # AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3" "zen4" "zen5" (zen3 opt support depends on GCC11) (zen4 opt support depends on GCC13) (zen5 opt support depends on GCC14 or CLANG 19.1)
+@@ -212,7 +212,7 @@ _compileroptlevel="1"
+ # - "generic_v2" (depends on GCC11 - to share the package between machines with different CPU µarch supporting at least x86-64-v2
+ # - "generic_v3" (depends on GCC11 - to share the package between machines with different CPU µarch supporting at least x86-64-v3
+ # - "generic_v4" (depends on GCC11 - to share the package between machines with different CPU µarch supporting at least x86-64-v4
+-_processor_opt=""
++_processor_opt="meteorlake"
+ 
+ # Desired x86_64 compiler ISA level for generic (depends on GCC11+ / CLANG12+) and _processor_opt="generic".
+ # "1" for x86-64-v1
+@@ -249,7 +249,7 @@ _bore_min_base_slice_ns="2000000"
+ _random_trust_cpu="true"
+ 
+ # Timer frequency - "100" "250" "300" "500" "750" "1000" ("2000" is available for cacule cpusched only, "625" is available for echo cpusched only) - More options available in kernel config prompt when left empty depending on selected cpusched with the default option pointed with a ">" (2000 for cacule, 100 for muqss, 625 for echo and 1000 for other cpu schedulers)
+-_timer_freq=""
++_timer_freq="1000"
+ 
+ # Default CPU governor - "performance", "ondemand", "schedutil" or leave empty for default (schedutil)
+ _default_cpu_gov="ondemand"
+@@ -293,7 +293,7 @@ _NR_CPUS_value=""
+ 
+ # [non-Arch only] Install kernel after the building is done ?
+ # Options are: "yes", "no", "prompt"
+-_install_after_building="prompt"
++_install_after_building="no"
+ 
+ # [non-Arch only] Use 'script' command for logging
+ _logging_use_script="yes"
