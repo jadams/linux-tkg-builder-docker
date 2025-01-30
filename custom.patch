@@ -14,7 +14,7 @@ index f7af4ed..bf921d8 100644
  #  -> note however that a "z" too small on a "x.y.z" version may make patches fail
  #     as they got adapted for newer "z" values.
 -_version=""
-+_version="6.13"
++_version="6.12.11"
  
  #### MISC OPTIONS ####
  
@@ -77,7 +77,7 @@ index f7af4ed..bf921d8 100644
  # - "generic_v3" (depends on GCC11 - to share the package between machines with different CPU µarch supporting at least x86-64-v3
  # - "generic_v4" (depends on GCC11 - to share the package between machines with different CPU µarch supporting at least x86-64-v4
 -_processor_opt=""
-+_processor_opt="meteorlake"
++_processor_opt="generic_v3"
  
  # Desired x86_64 compiler ISA level for generic (depends on GCC11+ / CLANG12+) and _processor_opt="generic".
  # "1" for x86-64-v1
